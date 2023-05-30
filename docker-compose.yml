@@ -1,0 +1,29 @@
+version: "3"
+services:
+  customer-service:
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./app:/app
+  db:
+    image: mysql
+    restart: always
+    environment:
+      - MYSQL_DATABASE=micro_db
+      - MYSQL_USER=micro_user
+      - MYSQL_PASSWORD=micro_password
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3307:3306"
+    expose:
+      - '3306'
+    volumes:
+      - my-db:/var/lib/mysql
+# Names our volume
+volumes:
+  my-db:
