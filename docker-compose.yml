@@ -1,29 +1,36 @@
 version: "3"
 services:
-  customer-service:
-    depends_on:
-      - db
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./app:/app
+#======================================================  DATABASE CONTAINER =============================================
   db:
-    image: mysql
+    image: ghcr.io/baharehtorki/groupmysql:latest
     restart: always
-    environment:
-      - MYSQL_DATABASE=micro_db
-      - MYSQL_USER=micro_user
-      - MYSQL_PASSWORD=micro_password
-      - MYSQL_ROOT_PASSWORD=root
     ports:
       - "3307:3306"
     expose:
       - '3306'
     volumes:
       - my-db:/var/lib/mysql
+
+#======================================================  CUSTOMER CONTAINER =============================================
+  customer-service:
+    depends_on:
+      - db
+    image: ghcr.io/baharehtorki/customer:latest
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./app:/app
+#======================================================  ORDER CONTAINERS =============================================
+#  item-service:
+#    depends_on:
+#      - customer_db
+#    image: ghcr.io/baharehtorki/customer:latest
+#    ports:
+#      - "8081:8080"
+#    volumes:
+#      - ./app:/app
+
+#======================================================  ITEM CONTAINERS =============================================
 # Names our volume
 volumes:
   my-db:

@@ -10,8 +10,8 @@ import se.neckademin.customer.Model.Purchases;
 import se.neckademin.customer.exception.NotSavedCustomerException;
 import se.neckademin.customer.exception.UrlException;
 import se.neckademin.customer.service.CustomerService;
-import se.neckademin.customer.service.ItemClient;
-import se.neckademin.customer.service.OrderClient;
+import se.neckademin.customer.client.ItemClient;
+import se.neckademin.customer.client.OrderClient;
 
 import java.util.List;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package se.neckademin.customer.service;
+package se.neckademin.customer.client;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
 
 public class OrderClient {
 
-    @Value("${PURCHASE_HOST}")
+    @Value("${PURCHASE_HOST:order-service}")
     private String host;
-    @Value("${PURCHASE_BASE_URL}")
+    @Value("${PURCHASE_BASE_URL:purchases/purchase/}")
     private String baseUrl;
 
     private Utility utility = new Utility();
