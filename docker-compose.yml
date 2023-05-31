@@ -34,8 +34,6 @@ services:
       wait-for-db:
         condition: service_completed_successfully
     image: ghcr.io/idacjohansson/order:latest
-    environment:
-      DB_PASSWORD: "springuser"
     volumes:
       - ./app:/app
 
