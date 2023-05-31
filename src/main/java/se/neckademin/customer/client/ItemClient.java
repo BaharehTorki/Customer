@@ -1,7 +1,9 @@
 package se.neckademin.customer.client;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -16,8 +18,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 public class ItemClient {
-    @Value("${ITEM_HOST}")
-    private String host;
+    private final static String host ="item-service/";
     private final static String baseUrl = "item/";
     private Utility utility = new Utility();
 

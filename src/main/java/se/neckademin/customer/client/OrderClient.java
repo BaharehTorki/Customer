@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 @Slf4j
 public class OrderClient {
 
-    @Value("${PURCHASE_HOST}")
-    private String host;
+    //    @Value("${PURCHASE_HOST}")
+    private final static String host = "order-service/";
     private final static String baseUrl = "purchases/purchase/";
 
     private Utility utility = new Utility();
