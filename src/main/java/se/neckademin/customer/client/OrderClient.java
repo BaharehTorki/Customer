@@ -24,9 +24,9 @@ public class OrderClient {
 
     public List<Purchases> getAllPurchase(Long customerID) throws UrlException {
 
+        log.info("Sending request to host + baseUrl ={}", host+baseUrl);
         URI url = utility.getUrl(host, baseUrl, customerID.toString());
         RestTemplate restTemplate = new RestTemplate();
-        log.info("Sending requst to url={}", url);
         Purchases[] purchases = restTemplate.getForObject(url, Purchases[].class);
 
         if (purchases != null) {
