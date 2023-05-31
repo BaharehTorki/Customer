@@ -31,6 +31,8 @@ services:
       wait-for-db:
         condition: service_completed_successfully
     image: ghcr.io/idacjohansson/order:latest
+    ports:
+      - "8081:8080"
     volumes:
       - ./app:/app
 
@@ -40,5 +42,7 @@ services:
       wait-for-db:
         condition: service_completed_successfully
     image: ghcr.io/baharehtorki/item:latest
+    ports:
+      - "8082:8080"
     volumes:
       - ./app:/app
