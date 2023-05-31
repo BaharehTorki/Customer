@@ -15,16 +15,15 @@ import java.util.stream.Collectors;
 @Slf4j
 public class OrderClient {
 
-    @Value("${PURCHASE_HOST:order-service}")
+    @Value("${PURCHASE_HOST}")
     private String host;
-    @Value("${PURCHASE_BASE_URL:purchases/purchase/}")
-    private String baseUrl;
+    private final static String baseUrl = "purchases/purchase/";
 
     private Utility utility = new Utility();
 
     public List<Purchases> getAllPurchase(Long customerID) throws UrlException {
 
-        log.info("Sending request to host + baseUrl ={}", host+baseUrl);
+        log.info("Sending request to Order service with, host + baseUrl ={}", host + baseUrl + customerID.toString());
         URI url = utility.getUrl(host, baseUrl, customerID.toString());
         RestTemplate restTemplate = new RestTemplate();
         Purchases[] purchases = restTemplate.getForObject(url, Purchases[].class);
@@ -36,6 +35,7 @@ public class OrderClient {
     }
 
     public void addOrder(Purchases purchases) throws UrlException {
+        log.info("Sending request to Order service with, host + baseUrl ={}", host + baseUrl + "add");
         URI addUri = utility.getUrl(host, baseUrl, "add");
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.postForEntity(addUri, purchases, Purchases.class);

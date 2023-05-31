@@ -20,8 +20,8 @@ services:
     volumes:
       - ./app:/app
     environment:
-      ITEM_HOST: item-service/
-      PURCHASE_HOST: order-service/
+      ITEM_HOST: "item-service/"
+      PURCHASE_HOST: "order-service/"
 
   wait-for-db:
       image: atkrad/wait4x
