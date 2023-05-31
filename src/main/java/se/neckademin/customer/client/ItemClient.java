@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 public class ItemClient {
-    private final static String host ="item-service:8082/";
+    private final static String host ="http://item-service:8082/";
     private final static String baseUrl = "item/";
     private Utility utility = new Utility();
 

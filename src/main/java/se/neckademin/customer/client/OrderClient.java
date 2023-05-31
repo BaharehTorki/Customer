@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class OrderClient {
 
     //    @Value("${PURCHASE_HOST}")
-    private final static String host = "order-service:8081/";
+    private final static String host = "http://order-service:8081/";
     private final static String baseUrl = "purchases/purchase/";
 
     private Utility utility = new Utility();
