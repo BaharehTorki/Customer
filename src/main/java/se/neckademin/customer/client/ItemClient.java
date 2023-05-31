@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ItemClient {
-    @Value("${ITEM_HOST}")
+    @Value("${ITEM_HOST:item-service}")
     private  String host;
-    @Value("${ITEM_BASE_URL}")
+    @Value("${ITEM_BASE_URL:item}")
     private  String baseUrl;
     private Utility utility = new Utility();
 
